@@ -11,6 +11,10 @@ def motorcycles_by_year(year)
   headers.each { |element| bikes << element.css('a').text}
   # array of strings for instances of motorbikes
   byebug
+
+
+
+
   bikes.each_with_index do |element, i|
     puts "#{i + 1}. #{element}"
   end
