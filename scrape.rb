@@ -9,7 +9,13 @@ def motorcycles_by_year(year)
   headers = parsed_data.css("div.mw-category div.mw-category-group ul li")
   bikes = []
   headers.each { |element| bikes << element.css('a').text}
+  # array of strings for instances of motorbikes
+  byebug
   bikes.each_with_index do |element, i|
-    puts "#{i}. #{element}"
+    puts "#{i + 1}. #{element}"
   end
 end
+
+# years = (1960..2018).to_a
+# 
+# years.each { |year| motorcycle_by_year(year)}
