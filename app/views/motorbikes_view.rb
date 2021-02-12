@@ -1,0 +1,32 @@
+require 'pry-byebug'
+
+class MotorbikesView
+  attr_reader :view
+
+  def initialize(view)
+    @view
+  end
+  
+  def all(array)
+    array.each { |element| puts "#{element.motorbike_id}, #{element.make_and_model}, #{element.year}" }
+  end
+  
+  def get_something(string)
+    puts "Please choose a year, brand or model:"
+    print "> "
+    answer = gets.chomp
+    if string == 'year'
+      # binding.pry
+      reply = answer.to_i
+      if (1960..2018).to_a.include?(reply)
+        return reply
+      else
+        nil
+      end
+    else
+      reply = gets.chomp
+    end
+  end
+  
+
+end

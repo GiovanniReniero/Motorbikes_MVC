@@ -17,19 +17,18 @@ class Motorbike
     DB.results_as_hash = true
      bikes = DB.execute("SELECT * FROM  motorbikes")
     #  binding.pry
-     final = bikes.map { |bike| Motorbike.new( motorbike_id: bike["motorbike_id"], make_and_model: bike["make_and_model"], year: ["year"] )}
-    final
+     final = bikes.map { |bike| Motorbike.new( motorbike_id: bike["motorbike_id"], make_and_model: bike["make_and_model"], year: bike["year"] )}
+    final # an array of Motorbike instances in hash form so an array of quasi~hashes
   end
 
   def self.find(n)
     # finds and instance based on the instance id 
     DB.results_as_hash = true
     if n.kind_of?(Integer)
-      motorbike = DB.execute("SELECT * FROM motorbikes WHERE motorbike_id = ?", n)
-      motorbike.empty? ? nil : nil
+      bikes = DB.execute("SELECT * FROM motorbikes WHERE motorbike_id = ?", n)
+      bikes.empty? ? nil : final = bikes.map { |bike| Motorbike.new( motorbike_id: bike["motorbike_id"], make_and_model: bike["make_and_model"], year: bike["year"] )}
     end
-    motorbike
-  end
+3  end
   
   def self.find_by_name(string)
     #finds instances by name model or brand
@@ -37,6 +36,18 @@ class Motorbike
     if string.kind_of?(String)
       result = DB.execute("SELECT * FROM motorbikes WHERE make_and_model LIKE '%#{string}%'")
       result.empty? ? nil : result
+    else
+      nil
+    end
+  end
+  
+  def self.find_by_year(year)
+    #finds instances by name model or brand
+    DB.results_as_hash = true
+    if year.kind_of?(Integer)
+      bikes = DB.execute("SELECT * FROM motorbikes WHERE year = ?", year)
+      # binding.pry
+      bikes.empty? ? nil : final = bikes.map { |bike| Motorbike.new( motorbike_id: bike["motorbike_id"], make_and_model: bike["make_and_model"], year: bike["year"] )}
     else
       nil
     end

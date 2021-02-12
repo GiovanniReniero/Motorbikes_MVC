@@ -1,7 +1,10 @@
+require_relative "controllers/motorbikes_controller.rb" #...?
 
 class Router
-  def initialize
-    @controller = MotorbikesController.new
+  attr_reader :controller
+
+  def initialize (attributes = {})
+    @motorbikes_controller = attributes[:motorbikes_controller]
   end
 
   def run
@@ -17,12 +20,12 @@ class Router
 
   def route_action(action)
     case action
-    when 1 then @controller.index
-    when 2 then @controller.year
-    when 3 then @controller.brand
-    when 4 then @controller.add
-    when 5 then @controller.delete
-    when 6 then @controller.favourite
+    when 1 then @motorbikes_controller.index
+    when 2 then @motorbikes_controller.year
+    when 3 then @motorbikes_controller.brand
+    when 4 then @motorbikes_controller.add
+    when 5 then @motorbikes_controller.delete
+    when 6 then @motorbikes_controller.favourite
     end
   end
 
@@ -49,7 +52,8 @@ class Router
   def print_welcome
     puts "-----------------------------"
     puts "Welcome to Motorbikes_MVC"
-    puts "Returns notable motorcycle models introduced on the market on any year from 1960 to 2018. All data  from Wikipedia."
+    puts "Returns some notable motorcycle models introduced on the market in the years between 1960 and 2018."
+    puts "All data from Wikipedia."
     puts "-----------------------------"
   end
 end
