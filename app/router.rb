@@ -1,3 +1,4 @@
+
 class Router
   def initialize
     @controller = MotorbikesController.new
@@ -27,11 +28,11 @@ class Router
 
   def actions
     [
-      "List all bikes"
+      "List all bikes",
       "Choose a year",
-      "List by Brand"
+      "List by Brand",
       "Edit a Bike",
-      "Add a Bike"
+      "Add a Bike",
       "Delete a post",
       "Mark favorite"
     ]
