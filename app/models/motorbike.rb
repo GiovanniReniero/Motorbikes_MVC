@@ -28,14 +28,14 @@ class Motorbike
       bikes = DB.execute("SELECT * FROM motorbikes WHERE motorbike_id = ?", n)
       bikes.empty? ? nil : final = bikes.map { |bike| Motorbike.new( motorbike_id: bike["motorbike_id"], make_and_model: bike["make_and_model"], year: bike["year"] )}
     end
-3  end
+  end
   
   def self.find_by_name(string)
     #finds instances by name model or brand
     DB.results_as_hash = true
     if string.kind_of?(String)
-      result = DB.execute("SELECT * FROM motorbikes WHERE make_and_model LIKE '%#{string}%'")
-      result.empty? ? nil : result
+      bikes = DB.execute("SELECT * FROM motorbikes WHERE make_and_model LIKE '%#{string}%'")
+      bikes.empty? ? nil : final = bikes.map { |bike| Motorbike.new( motorbike_id: bike["motorbike_id"], make_and_model: bike["make_and_model"], year: bike["year"] )}
     else
       nil
     end

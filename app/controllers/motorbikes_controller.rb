@@ -1,3 +1,4 @@
+require "pry-byebug"
 require_relative "../models/motorbike.rb"
 
 class MotorbikesController
@@ -23,14 +24,14 @@ class MotorbikesController
   end 
     
   def brand
-      #list all the bikes by brand or model
-      marca = @motorbikes_view.get_something('brand')
-      if marca.kind_of?(String)
-        array = Motorbike.find_by_name(marca)
-        @motorbikes_view.all(array)
-      else
-        brand
-      end
+    marca = @motorbikes_view.get_something('brand')
+    array = Motorbike.find_by_name(marca)
+    # binding.pry
+    if array.kind_of?(NilClass)
+      brand
+    else
+      @motorbikes_view.all(array)
+    end
   end
   
   def add

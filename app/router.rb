@@ -23,9 +23,9 @@ class Router
     when 1 then @motorbikes_controller.index
     when 2 then @motorbikes_controller.year
     when 3 then @motorbikes_controller.brand
-    when 4 then @motorbikes_controller.add
-    when 5 then @motorbikes_controller.delete
-    when 6 then @motorbikes_controller.favourite
+    # when 4 then @motorbikes_controller.add
+    # when 5 then @motorbikes_controller.delete
+    # when 6 then @motorbikes_controller.update
     end
   end
 
@@ -34,10 +34,10 @@ class Router
       "List all bikes",
       "Choose a year",
       "List by Brand",
-      "Edit a Bike",
-      "Add a Bike",
-      "Delete a post",
-      "Mark favorite"
+      # "Edit a Bike",
+      # "Add a Bike",
+      # "Delete a post",
+      # "Mark favorite"
     ]
   end
 

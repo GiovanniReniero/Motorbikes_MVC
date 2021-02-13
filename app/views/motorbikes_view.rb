@@ -15,8 +15,8 @@ class MotorbikesView
     puts "Please choose a year, brand or model:"
     print "> "
     answer = gets.chomp
+    # binding.pry
     if string == 'year'
-      # binding.pry
       reply = answer.to_i
       if (1960..2018).to_a.include?(reply)
         return reply
@@ -24,7 +24,7 @@ class MotorbikesView
         nil
       end
     else
-      reply = gets.chomp
+      answer
     end
   end
   
