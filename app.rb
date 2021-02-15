@@ -29,7 +29,7 @@ def motorcycles_by_year(year) # Scrape!
 end
 
 if Motorbike.all.empty?
-  range = (1960..2018).to_a
+  range = (1962..2018).to_a
   puts ".....Ssssscraping the net!...might take a few seconds."
   range.each { |year| motorcycles_by_year(year) }
 end

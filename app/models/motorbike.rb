@@ -31,12 +31,12 @@ class Motorbike
   end
 
   def self.drop
-    DB.execute('DROP TABLE IF EXISTS `motorbikes`;')
+    DB.execute('DROP TABLE IF EXISTS motorbikes')
     create_statement = "
-    CREATE TABLE `motorbikes` (
-      `motorbike_id`  INTEGER PRIMARY KEY AUTOINCREMENT,
-      `make_and_model` TEXT(30),
-      `year` INTEGER,
+    CREATE TABLE motorbikes (
+      motorbike_id  INTEGER PRIMARY KEY AUTOINCREMENT,
+      make_and_model TEXT(30),
+      year INTEGER
     );"
     DB.execute(create_statement)
   end

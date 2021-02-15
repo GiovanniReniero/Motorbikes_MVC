@@ -12,14 +12,14 @@ class MotorbikesView
   end
   
   def get_something(string)
-    sleep(1)
+    sleep(0.5)
     puts "Please choose a year, brand or model:"
     print "> "
     answer = gets.chomp
     # binding.pry
     if string == 'year'
       reply = answer.to_i
-      if (1960..2018).to_a.include?(reply)
+      if (1962..2018).to_a.include?(reply)
         return reply
       else
         nil

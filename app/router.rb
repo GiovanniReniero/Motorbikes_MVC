@@ -10,6 +10,7 @@ class Router
   def run
     print_welcome
     loop do
+      sleep(1)
       print_menu
       action = gets.chomp.to_i
       # binding.pry
@@ -30,7 +31,6 @@ class Router
       when 4 then @motorbikes_controller.drop # needs to be fixed!
     else 
       puts ''
-      sleep(1)
       puts "Please make a proper selection..."
       sleep(1)
     end
@@ -60,7 +60,7 @@ class Router
   def print_welcome
     puts "-----------------------------"
     puts "Welcome to Motorbikes_MVC"
-    puts "Returns some notable motorcycle models introduced on the market in the years between 1960 and 2018."
+    puts "Returns some notable motorcycle models introduced on the market in the years between 1962 and 2018."
     puts "All data from Wikipedia."
     puts "-----------------------------"
   end

@@ -9,13 +9,13 @@ class MotorbikesController
   end
   
   def index
-    sleep(1)
+    sleep(0.3)
     array = Motorbike.all
     @motorbikes_view.all(array)
   end
   
   def year
-    sleep(1)
+    sleep(0.3)
     anno = @motorbikes_view.get_something('year')
     if anno.kind_of?(NilClass)
       year
@@ -26,7 +26,7 @@ class MotorbikesController
   end 
   
   def brand
-    sleep(1)
+    sleep(0.3)
     marca = @motorbikes_view.get_something('brand')
     array = Motorbike.find_by_name(marca)
     # binding.pry
