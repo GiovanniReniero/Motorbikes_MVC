@@ -1,5 +1,5 @@
-require_relative "controllers/motorbikes_controller.rb" #...?
-
+# require_relative "controllers/motorbikes_controller.rb" #...?
+require 'pry-byebug'
 class Router
   attr_reader :controller
 
@@ -12,6 +12,7 @@ class Router
     loop do
       print_menu
       action = gets.chomp.to_i
+      # binding.pry
       route_action(action)
     end
   end
@@ -20,12 +21,18 @@ class Router
 
   def route_action(action)
     case action
-    when 1 then @motorbikes_controller.index
-    when 2 then @motorbikes_controller.year
-    when 3 then @motorbikes_controller.brand
-    # when 4 then @motorbikes_controller.add
-    # when 5 then @motorbikes_controller.delete
-    # when 6 then @motorbikes_controller.update
+      when 1 then @motorbikes_controller.index
+      when 2 then @motorbikes_controller.year
+      when 3 then @motorbikes_controller.brand
+      # when 4 then @motorbikes_controller.add
+      # when 5 then @motorbikes_controller.delete
+      # when 6 then @motorbikes_controller.update
+      when 4 then @motorbikes_controller.drop # needs to be fixed!
+    else 
+      puts ''
+      sleep(1)
+      puts "Please make a proper selection..."
+      sleep(1)
     end
   end
 
@@ -37,7 +44,8 @@ class Router
       # "Edit a Bike",
       # "Add a Bike",
       # "Delete a post",
-      # "Mark favorite"
+      # "Mark favorite",
+      "Exit"
     ]
   end
 

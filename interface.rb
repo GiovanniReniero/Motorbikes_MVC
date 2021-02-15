@@ -1,4 +1,4 @@
-require_relative "scrape"
+# require_relative "scrape"
 require "date"
 
 def require_year

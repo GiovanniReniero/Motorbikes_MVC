@@ -12,6 +12,7 @@ class MotorbikesView
   end
   
   def get_something(string)
+    sleep(1)
     puts "Please choose a year, brand or model:"
     print "> "
     answer = gets.chomp
@@ -27,6 +28,16 @@ class MotorbikesView
       answer
     end
   end
+  
+  def dropping
+    puts "Clearing database...."
+  end
+
+  def farewell
+    puts "Database cleared...shuting down."
+    sleep(1)
+  end
+  
   
 
 end

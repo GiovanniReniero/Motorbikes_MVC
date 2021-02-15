@@ -1,6 +1,6 @@
 require "pry-byebug"
-require "sqlite3"
-DB = SQLite3::Database.new "../../db/motorbikes.db"
+# require "sqlite3"
+# DB = SQLite3::Database.new "../../db/motorbikes.db"
 
 class Motorbike
   attr_accessor :make_and_model, :year
@@ -29,6 +29,18 @@ class Motorbike
       bikes.empty? ? nil : final = bikes.map { |bike| Motorbike.new( motorbike_id: bike["motorbike_id"], make_and_model: bike["make_and_model"], year: bike["year"] )}
     end
   end
+
+  def self.drop
+    DB.execute('DROP TABLE IF EXISTS `motorbikes`;')
+    create_statement = "
+    CREATE TABLE `motorbikes` (
+      `motorbike_id`  INTEGER PRIMARY KEY AUTOINCREMENT,
+      `make_and_model` TEXT(30),
+      `year` INTEGER,
+    );"
+    DB.execute(create_statement)
+  end
+
   
   def self.find_by_name(string)
     #finds instances by name model or brand
