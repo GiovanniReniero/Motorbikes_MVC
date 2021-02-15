@@ -10,7 +10,7 @@ class MotorbikesView
   end
   
   def get_something(string)
-    sleep(0.5)
+    sleep(0.3)
     puts "Please choose a year, brand or model:"
     print "> "
     answer = gets.chomp

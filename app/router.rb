@@ -39,8 +39,8 @@ class Router
   def actions
     [
       "List all bikes",
-      "Choose a year",
-      "List by Brand",
+      "List by year",
+      "List by make or model",
       # "Edit a Bike",
       # "Add a Bike",
       # "Delete a post",
