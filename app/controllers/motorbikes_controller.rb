@@ -1,6 +1,3 @@
-require "pry-byebug"
-require_relative "../models/motorbike.rb"
-
 class MotorbikesController
   attr_reader :motorbikes_view
 
@@ -29,7 +26,6 @@ class MotorbikesController
     sleep(0.3)
     marca = @motorbikes_view.get_something('brand')
     array = Motorbike.find_by_name(marca)
-    # binding.pry
     if array.kind_of?(NilClass)
       brand
     else
@@ -38,7 +34,6 @@ class MotorbikesController
   end
 
   def drop
-    # binding.pry
     @motorbikes_view.dropping
     sleep(1)
     Motorbike.drop
@@ -53,6 +48,5 @@ class MotorbikesController
   def delete
     #delete a bike by id
   end
-  
 
 end

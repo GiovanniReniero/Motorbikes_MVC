@@ -7,11 +7,6 @@ DB = SQLite3::Database.new (File.join(dir, "db/motorbikes.db"))
 
 Dir.glob(File.join(dir, "app/**/*.rb")).sort.each { |file| require file } # Requires all the files needed to share database and Class initializations
 
-# require_relative "app/views/motorbikes_view.rb"
-# require_relative "app/router.rb"
-# require_relative "app/controllers/motorbikes_controller.rb"
-# require_relative "app/models/motorbike.rb"
-
 view = MotorbikesView.new('') # Initialize model
 controller = MotorbikesController.new(motorbikes_view: view) # Initialize Controller
 router = Router.new(motorbikes_controller: controller) # Initilaize rooter
@@ -24,7 +19,6 @@ def motorcycles_by_year(year) # Scrape!
   make_and_model = []
   headers.each { |element| make_and_model << element.css('a').text}
   array = make_and_model.map { |element| Motorbike.new(make_and_model: element, year: year) }
-  # byebug
   array.each { |bike| bike.save}
 end
 

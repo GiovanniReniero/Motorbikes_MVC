@@ -25,10 +25,10 @@ class Router
       when 1 then @motorbikes_controller.index
       when 2 then @motorbikes_controller.year
       when 3 then @motorbikes_controller.brand
-      # when 4 then @motorbikes_controller.add
-      # when 5 then @motorbikes_controller.delete
-      # when 6 then @motorbikes_controller.update
-      when 4 then @motorbikes_controller.drop # needs to be fixed!
+      when 4 then @motorbikes_controller.drop 
+      # when 5 then @motorbikes_controller.add
+      # when 6 then @motorbikes_controller.delete
+      # when 7 then @motorbikes_controller.update
     else 
       puts ''
       puts "Please make a proper selection..."

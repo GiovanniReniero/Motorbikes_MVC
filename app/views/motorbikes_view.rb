@@ -1,5 +1,3 @@
-require 'pry-byebug'
-
 class MotorbikesView
   attr_reader :view
 
@@ -16,14 +14,9 @@ class MotorbikesView
     puts "Please choose a year, brand or model:"
     print "> "
     answer = gets.chomp
-    # binding.pry
     if string == 'year'
       reply = answer.to_i
-      if (1962..2018).to_a.include?(reply)
-        return reply
-      else
-        nil
-      end
+      (1962..2018).to_a.include?(reply) ? reply : nil
     else
       answer
     end
@@ -37,7 +30,4 @@ class MotorbikesView
     puts "Database cleared...shuting down."
     sleep(1)
   end
-  
-  
-
 end
