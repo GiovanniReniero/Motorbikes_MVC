@@ -11,22 +11,28 @@ class Motorbike
     @make_and_model = attributes[:make_and_model]
     @year = attributes[:year]
   end
-  # compare your code with that of Hacker news!!
+
+  def self.bikes_map(bikes)
+    final = bikes.map { |bike| Motorbike.new( motorbike_id: bike["motorbike_id"], make_and_model: bike["make_and_model"], year: bike["year"] )}
+  end
+
+  def bikes_map(bikes)
+    final = bikes.map { |bike| Motorbike.new( motorbike_id: bike["motorbike_id"], make_and_model: bike["make_and_model"], year: bike["year"] )}
+  end
 
   def self.all
     DB.results_as_hash = true
-     bikes = DB.execute("SELECT * FROM  motorbikes")
-    #  binding.pry
-     final = bikes.map { |bike| Motorbike.new( motorbike_id: bike["motorbike_id"], make_and_model: bike["make_and_model"], year: bike["year"] )}
-    final # an array of Motorbike instances in hash form so an array of quasi~hashes
-  end
+    bikes = DB.execute("SELECT * FROM  motorbikes")    
+    final = bikes_map(bikes)
+    final 
+    end
 
   def self.find(n)
     # finds and instance based on the instance id 
     DB.results_as_hash = true
     if n.kind_of?(Integer)
       bikes = DB.execute("SELECT * FROM motorbikes WHERE motorbike_id = ?", n)
-      bikes.empty? ? nil : final = bikes.map { |bike| Motorbike.new( motorbike_id: bike["motorbike_id"], make_and_model: bike["make_and_model"], year: bike["year"] )}
+      bikes.empty? ? nil : final = final = bikes_map(bikes) 
     end
   end
 
@@ -47,7 +53,7 @@ class Motorbike
     DB.results_as_hash = true
     if string.kind_of?(String)
       bikes = DB.execute("SELECT * FROM motorbikes WHERE make_and_model LIKE '%#{string}%'")
-      bikes.empty? ? nil : final = bikes.map { |bike| Motorbike.new( motorbike_id: bike["motorbike_id"], make_and_model: bike["make_and_model"], year: bike["year"] )}
+      bikes.empty? ? nil : final = bikes_map(bikes) 
     else
       nil
     end
@@ -58,8 +64,7 @@ class Motorbike
     DB.results_as_hash = true
     if year.kind_of?(Integer)
       bikes = DB.execute("SELECT * FROM motorbikes WHERE year = ?", year)
-      # binding.pry
-      bikes.empty? ? nil : final = bikes.map { |bike| Motorbike.new( motorbike_id: bike["motorbike_id"], make_and_model: bike["make_and_model"], year: bike["year"] )}
+      bikes.empty? ? nil : final = bikes_map(bikes)
     else
       nil
     end
