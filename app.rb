@@ -29,5 +29,3 @@ if Motorbike.all.empty?
 end
 
 router.run
-
-

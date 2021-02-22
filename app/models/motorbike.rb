@@ -46,7 +46,6 @@ class Motorbike
     );"
     DB.execute(create_statement)
   end
-
   
   def self.find_by_name(string)
     #finds instances by name model or brand
